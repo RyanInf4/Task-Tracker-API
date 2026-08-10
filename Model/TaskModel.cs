@@ -14,12 +14,6 @@ class Task
     [Required]
     public int Priority {get; set;}
 
-    public Task (int difficulty, bool state, string taskname, string description, int priority)
-    {
-        Difficulty = difficulty;
-        State = state;
-        Taskname = taskname;
-        Description = description;
-        Priority = priority;
-    }
+    public int Id {get; set;}
+
 }
