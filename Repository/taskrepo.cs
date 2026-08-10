@@ -1,14 +1,25 @@
+using System.Linq;
 class Repository
 {
     public static List<Task> AllTasks = new List<Task>();
+    private static int AutoId = 1;
+    
 
-    public static void AddTask(Task task)
+    public static int AddTask(Task task)
     {
         AllTasks.Add(task);
+        AutoId++;
+        task.Id += AutoId;
+
+        return task.Id;
     }
 
-    public static void IdToTask(Task task)
+    public static Task TaskById (int id)
     {
-        task.Id = task.Id + 1;
+        var FindTaskId = AllTasks.FirstOrDefault(ExpectedId => ExpectedId.Id == id);
+
+            return FindTaskId;
+
     }
+
 }

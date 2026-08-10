@@ -17,14 +17,28 @@ public class TasksController : ControllerBase
 
     public IActionResult PostTask ([FromBody] Task task)
     {
-        if (task.Taskname != String.Empty)
+        if (task.Taskname == String.Empty)
         {
-        Repository.AddTask(task);
-        Repository.IdToTask(task);
+            return BadRequest();
         }
 
+        int taskid = Repository.AddTask(task);
+        taskid = task.Id;
 
-        return CreatedAtAction(nameof(PostTask), new {id = task.Id}, task);
 
+        return CreatedAtAction(nameof(PostTask), new {id = taskid}, task);
+    }
+
+    [HttpGet("{id}")] 
+    public IActionResult GetTaskById (int id)
+    {
+        var Task = Repository.TaskById(id);
+
+        if (Task == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(Task);
     }
 }

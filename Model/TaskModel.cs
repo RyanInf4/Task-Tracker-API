@@ -16,4 +16,6 @@ public class Task
 
     public int Id {get; set;}
 
+    private static int id = 1;
+
 }
