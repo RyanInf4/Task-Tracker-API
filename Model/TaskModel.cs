@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-class Task
+public class Task
 {
     // Task has its difficulty, done or incomplete, name, description, priority
     [Required]
