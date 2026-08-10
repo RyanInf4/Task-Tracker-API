@@ -22,11 +22,11 @@ public class TasksController : ControllerBase
             return BadRequest();
         }
 
-        int taskid = Repository.AddTask(task);
-        taskid = task.Id;
+        int Taskid = Repository.AddTask(task);
+        Taskid = task.Id;
 
 
-        return CreatedAtAction(nameof(PostTask), new {id = taskid}, task);
+        return CreatedAtAction(nameof(PostTask), new {id = Taskid}, task);
     }
 
     [HttpGet("{id}")] 
