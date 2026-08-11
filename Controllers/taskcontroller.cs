@@ -41,4 +41,25 @@ public class TasksController : ControllerBase
 
         return Ok(Task);
     }
+
+    [HttpPut("{id}")]
+
+    public IActionResult PutTask (int id, [FromBody] Task task)
+    {
+        if (task.Id != id)
+        {
+            return BadRequest();
+        }
+
+        Repository.UpdateTask(task);
+
+        return NoContent();
+    }
+
+    [HttpPatch("{id}")]
+
+    public IActionResult PatchTask (int id, [FromBody] Task PartialUpdate)
+    {
+        
+    }
 }

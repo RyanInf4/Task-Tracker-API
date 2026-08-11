@@ -22,4 +22,38 @@ class Repository
 
     }
 
+    public static Task UpdateTask (Task taskfrombody)
+    {
+        var FindTask = AllTasks.FirstOrDefault(ExpectedId => ExpectedId.Id == taskfrombody.Id);
+
+        if (FindTask != null)
+        {
+            FindTask.Id = taskfrombody.Id;
+            FindTask.Difficulty = taskfrombody.Difficulty;
+            FindTask.State = taskfrombody.State;
+            FindTask.Taskname = taskfrombody.Taskname;
+            FindTask.Description = taskfrombody.Description;
+            FindTask.Priority = taskfrombody.Priority;
+
+            return FindTask;
+        }
+
+        return null;
+    }
+
+    public static void UpdatePatchTask (Task taskfrombody)
+    {
+        var FindTask = AllTasks.FirstOrDefault(Expect => Expect.Id == taskfrombody.Id);
+
+        if (taskfrombody != null) { 
+
+            FindTask.Description == taskfrombody.Description;
+
+            
+        
+        }
+
+        
+    }
+
 }
