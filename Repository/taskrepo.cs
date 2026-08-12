@@ -41,19 +41,5 @@ class Repository
         return null;
     }
 
-    public static void UpdatePatchTask (Task taskfrombody)
-    {
-        var FindTask = AllTasks.FirstOrDefault(Expect => Expect.Id == taskfrombody.Id);
-
-        if (taskfrombody != null) { 
-
-            FindTask.Description == taskfrombody.Description;
-
-            
-        
-        }
-
-        
-    }
 
 }

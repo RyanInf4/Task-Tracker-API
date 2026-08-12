@@ -56,10 +56,4 @@ public class TasksController : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch("{id}")]
-
-    public IActionResult PatchTask (int id, [FromBody] Task PartialUpdate)
-    {
-        
-    }
 }
