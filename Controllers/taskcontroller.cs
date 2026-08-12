@@ -10,21 +10,32 @@ public class TasksController : ControllerBase
     [HttpGet]
     public IActionResult GetTasks ()
     {
-        return Ok(Repository.AllTasks);
+        var taskDtos = Repository.AllTasks.Select(_task => new TaskDTO
+        {
+            Taskname = _task.Taskname,
+            Difficulty = _task.Difficulty,
+            State = _task.State,
+            Priority = _task.Priority,
+            Description = _task.Description
+
+
+        }).ToList();
+
+        return Ok(taskDtos);
     }
 
     [HttpPost]
 
     public IActionResult PostTask ([FromBody] Task task)
     {
+
+
         if (task.Taskname == String.Empty)
         {
             return BadRequest();
         }
 
         int Taskid = Repository.AddTask(task);
-        Taskid = task.Id;
-
 
         return CreatedAtAction(nameof(PostTask), new {id = Taskid}, task);
     }
@@ -32,14 +43,14 @@ public class TasksController : ControllerBase
     [HttpGet("{id}")] 
     public IActionResult GetTaskById (int id)
     {
-        var Task = Repository.TaskById(id);
+        var Task = Repository.TaskById(id);   
 
         if (Task == null)
         {
             return NotFound();
         }
 
-        return Ok(Task);
+        return Ok(TaskDTO.TransformDTO(Task));
     }
 
     [HttpPut("{id}")]

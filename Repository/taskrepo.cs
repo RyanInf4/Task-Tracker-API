@@ -7,10 +7,11 @@ class Repository
 
     public static int AddTask(Task task)
     {
-        AllTasks.Add(task);
         AutoId++;
         task.Id += AutoId;
-
+        AllTasks.Add(task);
+        
+        
         return task.Id;
     }
 
