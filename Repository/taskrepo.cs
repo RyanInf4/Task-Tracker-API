@@ -41,5 +41,16 @@ class Repository
         return null;
     }
 
+    public static void DeleteRepoTask (int Id) {
+
+        var FindTask = AllTasks.FirstOrDefault(Expect => Expect.Id == Id);
+
+        if (FindTask != null)
+        {
+            AllTasks.Remove(FindTask);
+        }
+        
+    }
+
 
 }

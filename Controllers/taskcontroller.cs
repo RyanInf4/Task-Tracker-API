@@ -56,4 +56,14 @@ public class TasksController : ControllerBase
         return NoContent();
     }
 
+    [HttpDelete("{id}")]
+
+    public IActionResult DeleteTask (int id)
+    {
+
+        Repository.DeleteRepoTask(id);
+
+        return NoContent();
+    }
+
 }
