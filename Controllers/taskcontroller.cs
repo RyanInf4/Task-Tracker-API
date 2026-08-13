@@ -50,7 +50,7 @@ public class TasksController : ControllerBase
             return NotFound();
         }
 
-        return Ok(TaskDTO.TransformDTO(Task));
+        return Ok(Task);
     }
 
     [HttpPut("{id}")]

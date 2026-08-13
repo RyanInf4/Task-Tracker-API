@@ -15,31 +15,29 @@ class Repository
         return task.Id;
     }
 
-    public static Task TaskById (int id)
+    public static TaskDTO TaskById (int id)
     {
         var FindTaskId = AllTasks.FirstOrDefault(ExpectedId => ExpectedId.Id == id);
 
-            return FindTaskId;
+        var returnedDTO = TaskDTO.TransformDTO(FindTaskId);
+
+            return returnedDTO;
 
     }
 
-    public static Task UpdateTask (Task taskfrombody)
+    public static TaskDTO UpdateTask (Task taskfrombody)
     {
         var FindTask = AllTasks.FirstOrDefault(ExpectedId => ExpectedId.Id == taskfrombody.Id);
 
-        if (FindTask != null)
-        {
-            FindTask.Id = taskfrombody.Id;
-            FindTask.Difficulty = taskfrombody.Difficulty;
-            FindTask.State = taskfrombody.State;
-            FindTask.Taskname = taskfrombody.Taskname;
-            FindTask.Description = taskfrombody.Description;
-            FindTask.Priority = taskfrombody.Priority;
+        FindTask.Taskname = taskfrombody.Taskname;
+        FindTask.Description = taskfrombody.Description;
+        FindTask.Priority = taskfrombody.Priority;
+        FindTask.State = taskfrombody.State;
+        FindTask.Difficulty = taskfrombody.Difficulty;
 
-            return FindTask;
-        }
+         var returnedDTO = TaskDTO.TransformDTO(FindTask);
 
-        return null;
+        return returnedDTO;
     }
 
     public static void DeleteRepoTask (int Id) {
